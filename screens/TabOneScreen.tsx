@@ -1,32 +1,59 @@
-import { StyleSheet } from 'react-native';
+import * as React from 'react'
+import { StyleSheet, Image, Text, View } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+// import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <Image source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'}} style={styles.image} />
+      <View style={styles.rightContainer}>
+        <View style={styles.row}>
+          <Text style={styles.name}>Test User 1</Text>
+          <Text style={styles.text}>12:00 PM</Text>
+        </View>
+        <Text numberOfLines={1} style={styles.text}>Hello there</Text>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  text: {
+    fontSize: 16,
+    color: 'white'
+  },
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'dimgrey',
+    flexDirection: 'row',
+    padding: 10,
   },
-  title: {
-    fontSize: 20,
+  image: {
+    backgroundColor: 'white',
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginRight: 10,
+  },
+  name: {
     fontWeight: 'bold',
+    fontSize: 19,  
+    flex: 1,
+    color: 'white',
+    marginBottom: 3,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    
+    // backgroundColor: 'blue'
   },
-});
+  rightContainer: {
+    // backgroundColor: 'red',
+    flex: 1,
+    justifyContent: 'center'
+  }
+})
+
